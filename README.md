@@ -1,2 +1,2 @@
-# Javascrpit
+# JavaScrpit
  
