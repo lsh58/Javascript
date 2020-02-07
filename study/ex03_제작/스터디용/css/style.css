@@ -9,6 +9,7 @@
 body {
     margin-top: 5em;
     font: 20px/1.5 "Helvetica", Arial, sans-serif;
+    background: #ddd;
 }
 
 .container {
