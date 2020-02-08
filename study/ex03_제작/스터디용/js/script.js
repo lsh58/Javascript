@@ -1,9 +1,36 @@
 
 // 변수 지정
+var slideContainer = document.getElementsByClassName('slider-container');
+var currentIndex = 0;
+var navPrev = document.getElementById('prev');
+var navNext = document.getElementById('next');
+
+function gotoSlide(idx){
+    slideContainer[0].style.left=idx*(-100) + '%';
+    currentIndex = idx;
+}
+
+navPrev.addEventListener('click',function(e){
+    e.preventDefault();
+    gotoSlide(--currentIndex);
+});
+
+navNext.addEventListener('click',function(e){
+    e.preventDefault();
+    gotoSlide(currentIndex+1);
+});
+
+
 
 // 슬라이드 이동 함수 
 
 // 버튼을 클릭하면 슬라이드 이동시키기
+
+
+
+
+
+
 
 // 버튼 사라지게 하기
 
