@@ -1,18 +1,33 @@
 
 // 변수 지정
 
-// 슬라이드 이동 함수 
+// 클릭(heading)하면 다른곳(question)에 있는 active는 모두 사라지고, 클릭한곳(heading)의 부모(question)에 active 추가하기
 
-// 버튼을 클릭하면 슬라이드 이동시키기
-
-// 버튼 사라지게 하기
+// active가 없는 모든 내용(body) 는 display=none을 갖고, active가 있는 곳의 내용만 display=block를 갖도록 
 
 
+var btnCollapse = document.getElementById('btn-collapse');
+var heading = document.getElementsByClassName('panel-heading');
+var question = document.getElementsByClassName('panel-question');
+var answer = document.getElementsByClassName('panel-body');
 
-// (추가) 첫번째 슬라이드 먼저 보이도록 하기
 
-// (추가) 슬라이드가 있으면 가로로 배열하기
+for(var i = 0; i < heading.length ; i++){
+    heading[i].addEventListener('click', function(ev){
+        for(var j = 0; j < question.length ; j++){
+            question[j].classList.remove('active');
+            ev.target.parentNode.classList.add('active');
+            activateBody();
+        }
+    });
+}
 
-// (추가) 슬라이드의 높이 확인하여 부모의 높이로 지정하기
+function activateBody(){
+    for(var x =0; x < answer.length ; x++){
+        answer[x].style.display='none';
+    }   
+    var activePanel=document.querySelector('.panel-question.active .panel-body');
+    activePanel.style.display='block';
+}
 
-// (추가) 처음에서 뒤로가는 버튼 누르면 마지막으로 가기 (마지막도 동일)
+activateBody();
