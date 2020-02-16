@@ -1,4 +1,6 @@
 // 변수 지정
+// heading, question , answer(body)
+
 
 // 클릭(heading)하면 다른곳(question)에 있는 active는 모두 사라지고, 
 //클릭한곳(heading)의 부모(question)에 active 추가하기
@@ -34,16 +36,8 @@ function activateBody() {
 
 activateBody();
 
-<<<<<<< HEAD
 btnCollapse.addEventListener('click', function(){
-    for(var x =0; x < answer.length ; x++){
-        answer[x].style.display='none';
+    for(var y =0; y < answer.length ; y++){
+        answer[y].style.display='none';
     }   
 });
-=======
-btnCollapse.addEventListener("click", function() {
-    for (var z = 0; z < answer.length; z++) {
-        answer[z].style.display = "none";
-    }
-});
->>>>>>> 97ce49e623207bb1a44cd4ab56db42a808ea3fff
