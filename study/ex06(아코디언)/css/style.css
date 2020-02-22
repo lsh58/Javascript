@@ -12,6 +12,7 @@ html, body {
   .panel-question {
     margin-bottom: 20px;
     background-color: #fff;
+    
   }
   
   .panel-heading {
@@ -23,7 +24,7 @@ html, body {
   }
   
   .panel-body {
-    padding: 15px;
+    padding: 15px;   
   }
   
   #btn-collapse {
