@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+//             알파벳을 입력받아, 대문자이면 소문자로, 소문자이면 대문자로 변환하여 출력하는 프로그램을 만드시오.
+//  (입력받은 게 알파벳이 아닌 경우 "알파벳이 아닙니다."라고 출력)
+            var a = Array();
+            a = prompt("알파벳을 입력해주세요");
+            
+            for(var i =0 ; i<=100; i++){
+                
+                a[i+1] = a[0].substring(i,i+1);
+                
+            }
+
+            var lowercase = Array();
+            var uppercase = Array();
+            lowercase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+            uppercase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+            
+            
+            // for(var i=0; i<26; i++){
+            //     if(a[i]==lowercase[i] || a[i]==uppercase[i]){
+            //     if(a[i]==lowercase[i]){
+            //         a[i] = uppercase[i];
+            //         document.write(a[i]);
+            //         break;
+            //     }
+                
+            //     if(a[i]==uppercase[i]){
+            //         a[i] = lowercase[i];
+            //         document.write(a[i]);
+            //         break;
+            //     }
+            
+            // }else{
+            //     document.write("알파벳을 입력해주세요");
+            //     break;
+            // }
+            // }
+            
+            
+
+        </script>
+    </body>
+</html>
