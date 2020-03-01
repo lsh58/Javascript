@@ -9,42 +9,75 @@
         <script>
 //             알파벳을 입력받아, 대문자이면 소문자로, 소문자이면 대문자로 변환하여 출력하는 프로그램을 만드시오.
 //  (입력받은 게 알파벳이 아닌 경우 "알파벳이 아닙니다."라고 출력)
-            var a = Array();
-            a = prompt("알파벳을 입력해주세요");
+            var a = prompt("알파벳을 입력해주세요");
             
-            for(var i =0 ; i<=100; i++){
-                
-                a[i+1] = a[0].substring(i,i+1);
-                
+            if( a>='a' && a<='z' ){
+            a = a.toUpperCase();
+            document.write(a);
             }
+            else if(a>='A' && a<='Z'){
+                a = a.toLowerCase();
+                document.write(a);
+            }
+            else{
+                document.write("알파벳을 입력해주세요")
+            }
+            
+//             0번 학생부터 9번 학생까지 10명의 점수를 담고있는 배열(각각 60, 70, 80, 90, 75, 85, 95, 50, 45, 30임. 
+// - 선언 시 초기화)을 가지고 각 번호에 맞게 등수를 저장하는 배열을 만들어 등수를 저장하도록 하고, 번호별 점수와 등수를 '실행 결과 예'와 같이 출력하시오.
+//  *높은 점수가 더 낮은 등수를 갖는다. (예: 100점과 80점, 90점이 있다면, 100점:1등, 80점:3등, 90점:2등)
 
-            var lowercase = Array();
-            var uppercase = Array();
-            lowercase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-            uppercase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-            
-            
-            // for(var i=0; i<26; i++){
-            //     if(a[i]==lowercase[i] || a[i]==uppercase[i]){
-            //     if(a[i]==lowercase[i]){
-            //         a[i] = uppercase[i];
-            //         document.write(a[i]);
-            //         break;
-            //     }
-                
-            //     if(a[i]==uppercase[i]){
-            //         a[i] = lowercase[i];
-            //         document.write(a[i]);
-            //         break;
-            //     }
-            
-            // }else{
-            //     document.write("알파벳을 입력해주세요");
-            //     break;
-            // }
-            // }
-            
-            
+        var student = new Array(5);
+        
+        for(var i =0; i<5; i++){
+            student[i] = prompt((i+1)+"번 학생의 점수를 입력하세요.")
+            if(student[i]>0 && student[i]<=100){}
+            else{alert("점수를 입력해주세요");
+            break;
+            }
+        }
+        for(var k =1; k<=5; k++){
+            for(var j=1; j<=5; j++){
+            if(student[j-1]<student[j]){
+            var c = student[j-1]; 
+            student[j-1] = student[j]; 
+            student[j] = c;
+            }
+        }
+        }
+        for(var i =0; i<5; i++){
+            document.write((i+1)+"번 학생의 점수 : " +student[i]+"점입니다. ("+(i+1)+"등)<br>" )
+        }
+
+
+//                 1~100사이 정수 중, 3의 배수와 5의 배수를 역순으로 출력하기
+//                  3과 5의 공배수는 "15"와 같이 출력하기
+
+                    for(var i = 100; i>=1; i--){
+                        if(i%3==0 || i%5 == 0){
+                            
+                            if(i%3 ==0 && i%5 == 0){
+                                document.write("\""+i+"\"<br>")
+                            }else{
+                                document.write(i+"<br>");
+                            }
+                        }
+                        
+                    }
+
+//                     (switch~case문) 회원등급에 따라 권한 출력하기
+//  등급을 입력해주세요 -> 
+//  1등급 : 삭제/쓰기/읽기
+//  2등급 : 쓰기/읽기
+//  3등급 : 읽기
+
+                    var a = prompt("등급을 입력해 주세요.(1~3)");
+                    switch(a){
+                        case "1" : document.write("1등급 : 삭제/쓰기/읽기"); break;
+                        case "2" : document.write("1등급 : 쓰기/읽기"); break;
+                        case "3" : document.write("1등급 : 읽기"); break;
+                        default : document.write("숫자를 입력해 주세요.");
+                    }
 
         </script>
     </body>
