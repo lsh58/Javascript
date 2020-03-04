@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <style>
+            img{width: 200px; margin-bottom: 30px;}
+            article{width: 500px; margin: 30px auto; display: flex; flex-direction: column; align-items: center;}
+            h1{text-align: center;}
+            #content{height: 35px;}
+            #play{width: 60px; height: 40px;}
+            table{margin-top:10px; width:220px; ; text-align: center;}
+            h3{margin:-20px 0 -10px}
+        </style>
+        <article>
+            <img src="baseball.jpg" alt="">
+            <h1>야구게임</h1>
+            <h3>서로다른 세자리 숫자를 입력해주세요</h3>
+            <p>기회는 총 9번입니다.</p>
+            <div>
+                <input id="content" type="text" />
+                <input id="play" type="button" value="Play" />
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>try</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </article>  
+        <script>
+
+        var a = new Array();
+        for(var k=0; k<10; k++){
+            a[k] = k;
+        }
+        for(var i=0; i<10; i++){
+            var random = Math.floor(Math.random()*10);
+            var c = a[i]; 
+            a[i] = a[random];
+            a[random] = c;
+        }
+       
+
+        var content = document.getElementById("content");
+        var btn = document.getElementById("play");
+        var tbody = document.querySelector("tbody");
+        var numbering = tbody.querySelectorAll("tr").length;
+
+        var count = 0;
+        function enter() {
+            var first = parseInt(content.value.substring(0,1));
+            var second = parseInt(content.value.substring(1,2));
+            var third = parseInt(content.value.substring(2,3));
+            var forth = parseInt(content.value.substring(3,4));
+            var ballcounter = 0;
+            var strikecounter =0;
+            if (content.value == "") {
+                alert("입력값이 없습니다");
+            } else if(isNaN(first)||isNaN(second)||isNaN(third)||forth){
+                alert("세자리 숫자를 입력해주세요");
+            } else if(first == second || second == third || third == first){
+                alert("서로다른 세자리 숫자를 입력해주세요");
+            }
+            else if (numbering < 9) {
+                numbering++;
+                if(first == a[1] || first == a[2]){
+                    ballcounter++;
+                }
+                if(second == a[0] || second == a[2]){
+                    ballcounter++;        
+                }
+                if(third == a[0] || third == a[1]){
+                    ballcounter++;        
+                }
+                if(first == a[0]){strikecounter++;}
+                if(second == a[1]){strikecounter++;}
+                if(third == a[2]){strikecounter++;}
+                if(first == a[0]&&second == a[1]&&third == a[2]){alert("정답입니다!")}
+                if(ballcounter==0 && strikecounter==0){alert("아웃");}
+                tbody.innerHTML += "<tr><td>" + "0" + numbering + "</td>"+ "<td>" + content.value + "</td>" + "<td>" +strikecounter+"S "+ ballcounter + "B"+"</td></tr>";
+            } else {
+                alert("실패");
+            }
+            content.value = "";
+        }
+
+        btn.addEventListener("click", enter);
+
+        content.addEventListener("keydown", function(e) {
+            if (e.keyCode == 13) {
+                enter();
+            }
+        });
+
+        </script>
+    </body>
+</html>

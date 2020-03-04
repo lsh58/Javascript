@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            article{
+                width: 1000px;
+                margin: 30px auto;
+            }
+            #answer {
+                width: 242px;
+                height: 30px;
+                margin-bottom: 10px;
+            }
+            .caculation input {
+                width: 120px;
+                height: 30px;
+            }
+            #clear{
+                background: rgb(98, 98, 255);
+                width: 120px;
+            }
+            #equal{
+                background: rgb(98, 98, 255);
+                width: 120px;
+            }
+            .calc input {
+                margin: -5px 0 -5px;
+                font-size: 13px;
+            }
+            .calc p input {
+                vertical-align: top;
+            }
+        </style>
+    </head>
+    <body>
+        <article class="caculation">
+            <h1>계산기2</h1>
+            <div><input id="answer" type="text" value="" placeholder="숫자를 입력해 주세요." dir="ltl" /></div>
+            <!-- rtl=우측정렬 -->
+            <input id="clear" type="button" value="clear" />
+            <div class="calc">
+                <p>
+                    <input id="10to2" type="button" value="10진수 -> 2진수" />
+                    <input id="10to8" type="button" value="10진수 -> 8진수" />
+                </p>
+                <p>
+                    <input id="10to16" type="button" value="10진수 -> 16진수" />
+                    <input id="2to10" type="button" value="2진수 -> 10진수" />
+                </p>
+            </div>
+        </article>
+   
+        <script>
+            var answer = document.getElementById("answer");
+            var clear = document.getElementById("clear");
+            var two = document.getElementById("10to2");
+            var eight = document.getElementById("10to8");
+            var sixteen = document.getElementById("10to16");
+            var reversetwo = document.getElementById("2to10");
+
+            clear.addEventListener("click", function() {
+                answer.value = "0";
+            });
+
+            two.addEventListener("click",function(){
+                var arr = new Array();
+                var a = answer.value;
+                var n = 0;
+                while(parseInt(a / 2) >= 0.5)
+                {
+                arr[n] += parseInt(a % 2);
+                 a = parseInt(a / 2);
+                 n++;
+                }
+                console.log(arr);
+                // answer.value = arr;
+            })
+
+
+            
+        </script>
+    </body>
+</html>
