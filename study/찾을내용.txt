@@ -1,0 +1,6 @@
+section / article
+
+js this 개념
+
+연락처,주소 등의 작성자에대한 내용은 footer안에 있는 address요소
+
