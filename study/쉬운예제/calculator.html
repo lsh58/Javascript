@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            article{
+                width: 1000px;
+                margin: 100px auto;
+            }
+            #answer {
+                width: 212px;
+                height: 30px;
+                margin-bottom: 10px;
+            }
+            .caculation input {
+                width: 50px;
+                height: 50px;
+            }
+            #clear{
+                width: 105px;
+            }
+            #equal{
+                width: 105px;
+            }
+            .calc input {
+                margin: -5px 0 -5px;
+            }
+            .calc p input {
+                vertical-align: top;
+            }
+        </style>
+    </head>
+    <body>
+        <article class="caculation">
+            <h1>계산기</h1>
+            <div><input id="answer" type="text" value="0" dir="ltl" readonly /></div>
+            <!-- rtl=우측정렬 -->
+            <input id="clear" type="button" value="clear" />
+
+            <input id="equal" type="button" value="=" />
+
+            <div class="calc">
+                <p>
+                    <input type="button" value="+" />
+                    <input type="button" value="-" />
+                    <input type="button" value="*" />
+                    <input type="button" value="/" />
+                </p>
+                <p>
+                    <input type="button" value="" />
+                    <input type="button" value="1" />
+                    <input type="button" value="2" />
+                    <input type="button" value="3" />
+                </p>
+                <p>
+                    <input type="button" value="" />
+                    <input type="button" value="4" />
+                    <input type="button" value="5" />
+                    <input type="button" value="6" />
+                </p>
+                <p>
+                    <input type="button" value="" />
+                    <input type="button" value="7" />
+                    <input type="button" value="8" />
+                    <input type="button" value="9" />
+                </p>
+                <p>
+                    <input type="button" value="" />
+                    <input type="button" value="" />
+                    <input type="button" value="0" />
+                    <input type="button" value="" />
+                </p>
+            </div>
+        </article>
+   
+        <script>
+            var answer = document.getElementById("answer");
+            var calc = document.querySelectorAll(".calc input");
+            var clear = document.getElementById("clear");
+            var equal = document.getElementById("equal");
+
+            for (var i = 0; i < calc.length; i++) {
+                calc[i].onclick = function num() {
+                    if (answer.value == 0) {
+                        answer.value = "";
+                    }
+                    answer.value += this.value;
+                };
+            }
+
+            clear.addEventListener("click", function() {
+                answer.value = "0";
+            });
+
+            equal.addEventListener("click", function() {
+                var total = eval(answer.value);
+                answer.value = total;
+            });
+        </script>
+    </body>
+</html>

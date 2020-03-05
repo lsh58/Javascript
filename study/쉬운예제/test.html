@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            article{
+                width: 1000px;
+                margin: 30px auto;
+            }
+            #answer {
+                width: 242px;
+                height: 30px;
+                margin-bottom: 10px;
+            }
+            .caculation input {
+                width: 120px;
+                height: 30px;
+            }
+            #clear{
+                background: rgb(98, 98, 255);
+                width: 120px;
+            }
+            #equal{
+                background: rgb(98, 98, 255);
+                width: 120px;
+            }
+            .calc input {
+                margin: -5px 0 -5px;
+                font-size: 13px;
+            }
+            .calc p input {
+                vertical-align: top;
+            }
+        </style>
+    </head>
+    <body>
+        <button value="ㅂ">ㅂ</button>
+        <button value="ㅈ">ㅈ</button>
+        <input type="text" value="" id="tt">
+   
+        <script>
+var bt = document.querySelectorAll('button')
+var tt = document.getElementById('tt');
+
+
+
+for(var i =0; i < bt.length;i++){
+    
+    bt[i].addEventListener("click",function(){
+        tt.value += this.value;
+    });
+}
+
+
+        </script>
+    </body>
+</html>
