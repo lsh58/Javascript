@@ -7,7 +7,7 @@
     <style>
         .all{display: flex; flex-direction: column;margin-top: 30px;}
         .card{width:80px; height:120px; position:relative; display:inline-block;}
-        .front{position:absolute; width:80px; height:120px; background:url("cardimg/back.jpg"); top:0; left:0;}
+        .front{position:absolute; width:80px; height:120px; background:url("https://github.com/lsh58/Javascript/blob/master/study/%EC%89%AC%EC%9A%B4%EC%98%88%EC%A0%9C/cardimg/back.jpg?raw=true"); top:0; left:0;}
         .back{position:absolute; width:80px; height:120px; top:0; left:0; transform:rotateY(90deg);}
         .cardRotate .front{opacity:1;animation: rotateAni 0.5s 1; transform:rotateY(90deg);}
         .cardRotate .back{opacity:1;animation: rotateAni2 0.5s 0.5s 1 backwards; transform:rotateY(0);}
@@ -157,9 +157,8 @@
         }  //0~23 섞기
         console.log(arr);
         for(var i=0; i<24; i++){
-            card_back[i].innerHTML = '<img src="/cardimg/'+arr[i]+'.jpg" alt="">';
+            card_back[i].innerHTML = '<img src="https://github.com/lsh58/Javascript/blob/master/study/%EC%89%AC%EC%9A%B4%EC%98%88%EC%A0%9C/cardimg/'+arr[i]+'.jpg?raw=true" alt="">';
         } //모든 뒷면에 랜덤으로 섞인 이미지 삽입
-        
         
 
         for(var i=0; i<24; i++){
