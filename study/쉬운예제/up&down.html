@@ -17,11 +17,11 @@
             img{ width: 150px; position: absolute; top: 50%; left: 46%; transform: translate(-50%, -50%);}
         </style>
         <h1>Up&Down 게임</h1>
-        <h3>10회 이내로 맞추세요~</h3>
+        <h3>10회 이내로 맞추세요~ (0~100사이값)</h3>
         <p>시도횟수 : <span id="num"></span></p>
         <div id="box">
-            <div id="up"><img src="up.png" alt=""></div>
-            <div id="down"><img src="down.png" alt=""></div>
+            <div id="up"><img src="https://github.com/lsh58/Javascript/blob/master/study/%EC%89%AC%EC%9A%B4%EC%98%88%EC%A0%9C/up.png?raw=true" alt=""></div>
+            <div id="down"><img src="https://github.com/lsh58/Javascript/blob/master/study/%EC%89%AC%EC%9A%B4%EC%98%88%EC%A0%9C/down.png?raw=true" alt=""></div>
         </div>
       <input type="text" name="" id="text" placeholder="숫자를 입력해주세요" value="">
       <input type="button" id="btn" value="입력">
@@ -35,14 +35,14 @@
             var random = Math.floor(Math.random()*100);
 
             
-            btn.addEventListener("click", updown());
+            btn.addEventListener("click", start);
 
             text.addEventListener("keydown", function(e) {
                 if (e.keyCode == 13) {
-                    updown();
+                    start();
                 }
             });
-            function updown() {
+            function start() {
                 counter++;
                 num.innerHTML = counter;
                 if(text.value > random){
