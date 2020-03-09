@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <style>
+            input{width: 200px; height: 50px; display: block; margin-bottom: 10px; margin-left: 10px; text-align: center;}
+            #text{font-size: 20px;}
+            input[type=button] {width: 205px;}
+            p{margin-left: 50px;}
+            #box{width: 200px; height: 200px; border: 1px solid #333; margin-left:10px; margin-bottom: 10px; position: relative;}
+            #up{opacity: 0; transition: .5s;}
+            #down{opacity: 0; transition: .5s;}
+            img{ width: 150px; position: absolute; top: 50%; left: 46%; transform: translate(-50%, -50%);}
+        </style>
+        <h1>Up&Down 게임</h1>
+        <h3>10회 이내로 맞추세요~ (0~100사이값)</h3>
+        <p>시도횟수 : <span id="num"></span></p>
+        <div id="box">
+            <div id="up"><img src="https://github.com/lsh58/Javascript/blob/master/study/%EC%89%AC%EC%9A%B4%EC%98%88%EC%A0%9C/up.png?raw=true" alt=""></div>
+            <div id="down"><img src="https://github.com/lsh58/Javascript/blob/master/study/%EC%89%AC%EC%9A%B4%EC%98%88%EC%A0%9C/down.png?raw=true" alt=""></div>
+        </div>
+      <input type="text" name="" id="text" placeholder="숫자를 입력해주세요" value="">
+      <input type="button" id="btn" value="입력">
+        <script>
+            var btn = document.getElementById("btn");
+            var num = document.getElementById("num");
+            var text = document.getElementById("text");
+            var up = document.getElementById("up");
+            var down = document.getElementById("down");
+            var counter = 0;
+            var random = Math.floor(Math.random()*100);
+
+            
+            btn.addEventListener("click", start);
+
+            text.addEventListener("keydown", function(e) {
+                if (e.keyCode == 13) {
+                    start();
+                }
+            });
+            function start() {
+                counter++;
+                num.innerHTML = counter;
+                if(text.value > random){
+                    up.style.opacity="0";
+                    down.style.opacity="1";
+                }
+                if(text.value < random){
+                    up.style.opacity="1";
+                    down.style.opacity="0";
+                }
+                if(text.value == random){
+                    alert("정답!")
+                }
+                if(text.value == ""){
+                    alert("값을 입력해주세요")
+                }
+                if(counter >10){
+                    alert("10회 초과!")
+                }
+                text.value = "";
+            }
+ 
+        </script>
+    </body>
+</html>

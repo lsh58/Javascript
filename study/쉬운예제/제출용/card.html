@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .all{display: flex; flex-direction: column;margin-top: 30px;}
+        .card{width:80px; height:120px; position:relative; display:inline-block;}
+        .front{position:absolute; width:80px; height:120px; background:url("https://github.com/lsh58/Javascript/blob/master/study/%EC%89%AC%EC%9A%B4%EC%98%88%EC%A0%9C/cardimg/back.jpg?raw=true"); top:0; left:0;}
+        .back{position:absolute; width:80px; height:120px; top:0; left:0; transform:rotateY(90deg);}
+        .cardRotate .front{opacity:1;animation: rotateAni 0.5s 1; transform:rotateY(90deg);}
+        .cardRotate .back{opacity:1;animation: rotateAni2 0.5s 0.5s 1 backwards; transform:rotateY(0);}
+        .backRotate .front{animation: backAni 0.5s   1; opacity:1;}
+        .backRotate .back{opacity:0;}
+
+        @keyframes rotateAni{
+        0%{transform:rotateY(0);}
+        100%{transform:rotateY(90deg);}
+        }
+        @keyframes rotateAni2{
+        0%{transform:rotateY(-90deg);}
+        100%{transform:rotateY(0deg);}
+        }
+
+        @keyframes backAni{
+        0%{transform:rotateY(90deg);}
+        100%{transform:rotateY(0deg);}
+        }
+    </style>
+</head>
+<body>
+    <h1>카드맞추기 게임</h1>
+    <h3>맞추면 +10점, 틀리면 -1점</h3>
+    <p>Your score:<span id="score"></span></p>
+    <a href=""><input type="button" value="다시하기"></a>
+    <div class="all">
+        <div class="first">
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+        </div>
+        <div class="second">
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+        </div>
+        <div class="third">
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+        </div>
+        <div class="forth">
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+            <div class="card">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var card = document.getElementsByClassName("card");
+        var card_back = document.getElementsByClassName("back");
+        var arr = new Array();
+        var score = 0;
+        var score_mark = document.getElementById("score");
+        
+        for(var k=0; k<12; k++){
+            arr[k] = k;
+            arr[k+12] = k;
+        } //배열에 0~23 숫자 입력
+        for(var i=0; i<24; i++){
+            var random = Math.floor(Math.random()*24);
+            var c = arr[i]; 
+            arr[i] = arr[random];
+            arr[random] = c;
+        }  //0~23 섞기
+        for(var i=0; i<24; i++){
+            card_back[i].innerHTML = '<img src="https://github.com/lsh58/Javascript/blob/master/study/%EC%89%AC%EC%9A%B4%EC%98%88%EC%A0%9C/cardimg/'+arr[i]+'.jpg?raw=true" alt="">';
+        } //모든 뒷면에 랜덤으로 섞인 이미지 삽입
+        
+
+        for(var i=0; i<24; i++){
+            card[i].addEventListener("click",function(){
+                var counter=0;
+                for(j=0; j<24; j++){
+                    if(card[j].className == "card cardRotate" && card[j].innerHTML == this.innerHTML){
+                        score += 10;
+                        card[j].innerHTML = "";
+                        this.innerHTML="";
+                    }//맞추면 점수 +10점 및 카드 없애기
+                    if(card[j].className == "card cardRotate"&& card[j].innerHTML != this.innerHTML){
+                        card[j].className = "card backRotate";
+                        score -= 1;
+                        }
+                    if(card[j].innerHTML==""){counter++;} //없앤 카드당 counter 증가
+                    if(counter == 23){
+                        alert("클리어! ");
+                        score_mark.innerHTML =  score ;
+                        } //전체가 없어지면 게임종료
+                }
+                if(this.className != "card cardRotate"){
+                    this.className = "card cardRotate";}
+            });
+        }
+        
+
+
+
+    </script>
+</body>
+</html>
