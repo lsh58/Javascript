@@ -100,10 +100,12 @@
  
     console.table(fifteen);
 
-    // Array.prototype.map()
+    // Array.prototype.map()  
     // 2. Give us an array of the inventor first and last names
     // 모든 초대자의 first name과 last name을 출력하시오.
-    const fullNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+    // const fullNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+    const fullNames = inventors.map(function(inventor){
+      return `${inventor.first} ${inventor.last}`});
     answer[3].innerHTML = fullNames;
     console.log(fullNames);
 
