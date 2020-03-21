@@ -105,23 +105,23 @@ function handleCheck(e) {
   // Check if they had the shift key down
   // AND check that they are checking it
   let inBetween = false;
-  if (e.shiftKey && this.checked) {
+  if (e.shiftKey && this.checked) { // 2) 싀프트 키를 누르고 클릭하면 조건문 안으로 진입
     // go ahead and do what we please
     // loop over every single checkbox
-    checkboxes.forEach(checkbox => {
+    checkboxes.forEach(checkbox => { // 이전에 누른 체크박스인 lastchecked부터 지금클릭한 this까지 각각 효과가 들어가게한다.
       console.log(checkbox);
-      if (checkbox === this || checkbox === lastChecked) {
+      if (checkbox === this || checkbox === lastChecked) { //lastchecked와 지금클릭한 this에서 inbetween 을 true로 바꿔준다 
         inBetween = !inBetween;
         console.log('Starting to check them in between!');
       }
 
-      if (inBetween) {
-        checkbox.checked = true;
+      if (inBetween) { 
+        checkbox.checked = true; //lastchecked와 지금클릭한 this사이의 모든 checkbox를 checked상태로 바꿔준다.
       }
     });
   }
 
-  lastChecked = this;
+  lastChecked = this; // 1) 클릭할때마다 클릭된애가 lastchecked 가 된다.
 }
 
 checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
