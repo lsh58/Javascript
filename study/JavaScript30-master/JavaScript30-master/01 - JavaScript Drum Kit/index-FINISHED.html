@@ -60,6 +60,8 @@
 <script>
   const keys = Array.from(document.querySelectorAll('.key'));
   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  console.log(Array.from(document.querySelectorAll('.key')));
+  console.log(document.querySelectorAll('.key'))
 
   function removeTransition(e) {
     console.log(e);

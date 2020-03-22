@@ -106,6 +106,7 @@
     // const fullNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
     const fullNames = inventors.map(function(inventor){
       return `${inventor.first} ${inventor.last}`});
+      // return "'"+ inventor.first +" "+ inventor.last+"'"});
     answer[3].innerHTML = fullNames;
     console.log(fullNames);
 
@@ -123,9 +124,10 @@
 
     // const ordered = inventors.sort((a, b) => a.year > b.year ? 1 : -1);
     const ordered = inventors.sort(function(a, b){
-      if(a.year > b.year){return;}
-      else{}
-    });//화살표함수,삼항연산자 안쓰면
+      if(a.year > b.year){return 1;}
+      else{return -1;}
+    });
+    //화살표함수,삼항연산자 안쓰면
     console.table(ordered);
     answer[5].innerHTML = ordered.map(inventor => `${inventor.first} ${inventor.last}`);
     // Array.prototype.reduce()
@@ -136,7 +138,7 @@
     // }, 0);
     const totalYears = inventors.reduce(function(total, inventor){
       return total + (inventor.passed - inventor.year);
-    }, 0);//화살표함수 안쓰면
+    }, 0); //화살표함수 안쓰면
     answer[7].innerHTML = totalYears;
     console.log(totalYears);
 
@@ -185,7 +187,7 @@
         obj[item] = 0;
       }
       obj[item]++;
-      return obj;
+      return obj; 
     }, {});
 
     console.log(transportation);
@@ -193,6 +195,3 @@
   </script>
 </body>
 </html>
-
-// ** &{} 사용법 기록할것
-// map, reduce, sort 공부할것
