@@ -40,12 +40,17 @@
   const walk = 500; // 500px
 
   function shadow(e) {
-    const { offsetWidth: width, offsetHeight: height } = hero;
-    let { offsetX: x, offsetY: y } = e;
-
+    const { offsetWidth: width, offsetHeight: height } = hero; //hero(div)의 넓이값과 높이값
+    let { offsetX: x, offsetY: y } = e; //x,y는 현재 마우스의 offsetX,offsetY값
+    console.log('x : '+x); //노트북기준 0~1000사이
+    console.log('y : '+y); //노트북기준 0~720 사이
     if (this !== e.target) {
       x = x + e.target.offsetLeft;
       y = y + e.target.offsetTop;
+      console.log('x in : '+x);
+      console.log('y in : '+y); 
+      console.log(e.target.offsetLeft+'Left');
+      console.log(e.target.offsetTop+'Top');
     }
 
     const xWalk = Math.round((x / width * walk) - (walk / 2));
@@ -53,8 +58,8 @@
 
     text.style.textShadow = `
       ${xWalk}px ${yWalk}px 0 rgba(255,0,255,0.7),
-      ${xWalk * -1}px ${yWalk}px 0 rgba(0,255,255,0.7),
-      ${yWalk}px ${xWalk * -1}px 0 rgba(0,255,0,0.7),
+      ${xWalk * -1}px ${yWalk}px 0 rgba(0,255,255,0.7), 
+      ${yWalk}px ${xWalk * -1}px 0 rgba(0,255,0,0.7), 
       ${yWalk * -1}px ${xWalk}px 0 rgba(0,0,255,0.7)
     `;
 
